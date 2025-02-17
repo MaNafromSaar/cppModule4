@@ -1,0 +1,46 @@
+```text
+
+objects created with new don't get automatically cleaned up 
+when they fall out of scope. Here's why:
+
+// Stack allocation - automatically cleaned up
+Animal stackAnimal;                  // Destructor called at end of scope
+
+// Heap allocation - manual cleanup needed
+Animal* heapAnimal = new Animal();   // Must call delete explicitly
+
+
+int main()
+{
+    const Animal* meta = new Animal();
+    const Animal* j = new Dog();
+    const Animal* i = new Cat();
+    // ...tests...
+    
+    // Cleanup
+    delete meta;  // Calls Animal destructor
+    delete j;     // Calls Dog destructor, then Animal destructor
+    delete i;     // Calls Cat destructor, then Animal destructor
+    return 0;
+}
+
+Problem:
+The sound variable may still be changed by the functions thus
+not leading to the expected behaviour of showing how important
+virtual calls are.
+
+Fix:
+dumben it down to fixed strings
+
+f both base and derived classes share the same (inherited)
+mutable variable, the “wrong” function can still show the 
+“right” string. To demonstrate why non-virtual calls are 
+problematic, you either:
+
+Make the base function print something fixed and the 
+derived function print something else
+By accident I’ve made it more robust by sharing the data in
+the hierarchy; that’s fine in real code—just not ideal for 
+illustrating the edge case of non-virtual calls.
+```
+
