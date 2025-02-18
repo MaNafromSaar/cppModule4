@@ -6,7 +6,7 @@
 /*   By: mnaumann <mnaumann@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 12:20:21 by mnaumann          #+#    #+#             */
-/*   Updated: 2025/02/17 17:18:14 by mnaumann         ###   ########.fr       */
+/*   Updated: 2025/02/18 10:23:46 by mnaumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,22 @@ class WrongAnimal {
 		~WrongAnimal();
 		WrongAnimal(const WrongAnimal &src);
 		WrongAnimal &operator=(const WrongAnimal &src);
+		std::string getType() const;
+		void setType(std::string type);
+		void makeSound() const;
+};
+
+class mutatedAnimal {
+	protected:
+		std::string type;
+	public:
+		// here we test what happens if the sound is a variable
+		std::string sound;
+		mutatedAnimal(std::string type = "mutatedAnimal", 
+			std::string sound = "UUUARRRGHH!");
+		~mutatedAnimal();
+		mutatedAnimal(const mutatedAnimal &src);
+		mutatedAnimal &operator=(const mutatedAnimal &src);
 		std::string getType() const;
 		void setType(std::string type);
 		void makeSound() const;

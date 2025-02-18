@@ -6,7 +6,7 @@
 /*   By: mnaumann <mnaumann@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 12:20:17 by mnaumann          #+#    #+#             */
-/*   Updated: 2025/02/17 17:19:00 by mnaumann         ###   ########.fr       */
+/*   Updated: 2025/02/18 10:41:59 by mnaumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,38 @@ void WrongAnimal::setType(std::string type) {
 
 void WrongAnimal::makeSound() const {
 	std::cout << "PseudoAnimal goes UUUARRRGGH!" << std::endl;
+}
+
+mutatedAnimal::mutatedAnimal(std::string type, std::string sound) : type(type), sound(sound) {
+	std::cout << "mutatedAnimal created" << std::endl;
+}
+
+mutatedAnimal::~mutatedAnimal() {
+	std::cout << "It's at a better place now" << std::endl;
+}
+
+mutatedAnimal::mutatedAnimal(const mutatedAnimal &src) {
+	*this = src;
+}
+
+mutatedAnimal &mutatedAnimal::operator=(const mutatedAnimal &src) {
+	std::cout << "mutatedAnimal assignment called" << std::endl;
+	if (this == &src)
+		return *this;
+	this->type = src.type;
+	this->sound = src.sound;
+	return *this;
+}
+
+std::string mutatedAnimal::getType() const {
+	return this->type;
+}
+
+void mutatedAnimal::setType(std::string type) {
+	std::cout << "Type set to " << type << std::endl;
+	this->type = type;
+}
+
+void mutatedAnimal::makeSound() const {
+	std::cout << "mutatedAnimal, which absolutely is not CatDog goes " << this->sound << std::endl;
 }
