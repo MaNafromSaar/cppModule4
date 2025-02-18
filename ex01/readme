@@ -1,0 +1,13 @@
+```
+
+# C++ Inheritance, Polymorphism, Deep Copying, and Memory Management
+
+This setup ensures that the appropriate destructors are called in the expected order, and it demonstrates the uniqueness of each animal's Brain.
+
+Function prints are largely commented out but can be activated to track proceedings.
+
+The exercise is designed to demonstrate concepts like inheritance, polymorphism, deep copying, and memory management in C++.
+
+It may seem unintuitive to create 100 instances of a class with derived classes where the only distinguishing feature is a random array of strings and their place in memory. Adding names and additional features would have been overkill for this exercise. Instead, each animal is provided with a Brain that can be used for checks.
+
+```
