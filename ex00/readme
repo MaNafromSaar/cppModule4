@@ -1,15 +1,19 @@
-```text
+# C++, Classes, Memory, Instantiating
 
-objects created with new don't get automatically cleaned up 
-when they fall out of scope. Here's why:
+Objects created with `new` don't get automatically cleaned up when they fall out of scope. Here's why:
 
-// Stack allocation - automatically cleaned up
-Animal stackAnimal;                  // Destructor called at end of scope
+### Stack Allocation - Automatically Cleaned Up
+```cpp
+Animal stackAnimal;  // Destructor called at end of scope
+```
 
-// Heap allocation - manual cleanup needed
-Animal* heapAnimal = new Animal();   // Must call delete explicitly
+### Heap Allocation - Manual Cleanup Needed
+```cpp
+Animal* heapAnimal = new Animal();  // Must call delete explicitly
+```
 
-
+### Example
+```cpp
 int main()
 {
     const Animal* meta = new Animal();
@@ -23,28 +27,23 @@ int main()
     delete i;     // Calls Cat destructor, then Animal destructor
     return 0;
 }
-
-Problem:
-The sound variable may still be changed by the functions thus
-not leading to the expected behaviour of showing how important
-virtual calls are.
-
-Fix:
-dumben it down to fixed strings
-
-If both base and derived classes share the same (inherited)
-mutable variable, the “wrong” function can still show the 
-“right” string. To demonstrate why non-virtual calls are 
-problematic, you either:
-
-Make the base function print something fixed and the 
-derived function print something else
-By accident I’ve made it more robust by sharing the data in
-the hierarchy; that’s fine in real code—just not ideal for 
-illustrating the edge case of non-virtual calls.
-
-Further test implements exactly that behaviour. CatDog gives the
-right sound but called through the wrong function which can be 
-seen in the statement before the sound
 ```
 
+### Problem
+The sound variable may still be changed by the functions, thus not leading to the expected behavior of showing how important virtual calls are.
+
+### Fix
+Dumb it down to fixed strings.
+
+If both base and derived classes share the same (inherited) mutable variable, the “wrong” function can still show the “right” string. To demonstrate why non-virtual calls are problematic, you either:
+
+1. Make the base function print something fixed and the derived function print something else.
+2. By accident, I’ve made it more robust by sharing the data in the hierarchy; that’s fine in real code—just not ideal for illustrating the edge case of non-virtual calls.
+
+### Further Test
+The further test implements exactly that behavior. `CatDog` gives the right sound but is called through the wrong function, which can be seen in the statement before the sound.
+
+---
+
+**Author**: Matthias Naumann  
+**GitHub**: [MaNafromSaar](https://github.com/MaNafromSaar)

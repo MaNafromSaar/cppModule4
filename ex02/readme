@@ -9,3 +9,8 @@ virtual void makeSound() const = 0;
 the `Animal` class becomes abstract and cannot be instantiated directly. Any class that inherits from `Animal` must provide an implementation for the `makeSound` function.
 
 I left the tests and pseudoclasses from ex00 in to demonstrate different behavior during evaluation.
+
+---
+
+**Author**: Matthias Naumann  
+**GitHub**: [MaNafromSaar](https://github.com/MaNafromSaar)
