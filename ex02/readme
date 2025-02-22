@@ -1,4 +1,4 @@
-# C++, Polymorphism, Abstract Class, Not Instantiable
+## C++, Polymorphism, Abstract Class, Not Instantiable, vtable pointer
 
 By declaring 
 
@@ -9,6 +9,44 @@ virtual void makeSound() const = 0;
 the `Animal` class becomes abstract and cannot be instantiated directly. Any class that inherits from `Animal` must provide an implementation for the `makeSound` function.
 
 I left the tests and pseudoclasses from ex00 in to demonstrate different behavior during evaluation.
+
+# On virtual classes in general
+
+Why wouldn't I set every class and method to virtual in the first place if it will solve inheritance issues and would it do any harm if I don't have derived classes?
+
+Virtual functions require each object to have a `vtable pointer`, adding a very slight memory and performance overhead. In most cases, especially for small programs or non-performance-critical code, this overhead is negligible.
+
+However, consider the following guidelines:
+
+- If you plan on using `polymorphism` (i.e., calling methods through base class pointers or references), declare virtual methods (and a virtual destructor) in the base class. This ensures the correct derived behavior is called.
+
+- If a class is never meant to be used polymorphically, you might omit virtual methods. This can allow the compiler to optimize more aggressively.
+
+- Making methods virtual by default:
+It is `common practice` to declare a destructor virtual in a base class that might be inherited. Other member functions should be virtual only if you intend to override them in derived classes.
+
+So, while there is a slight cost in declaring functions virtual, it generally does not do harm and is good practice when you expect inheritance. In contrast, using the virtual keyword on classes or methods that are never overridden might be unnecessary and could potentially limit optimizations, but in many cases this overhead is minimal
+
+# On vtable pointers
+
+A vtable pointer (often simply called the vptr) is an implementation detail used by C++ compilers to support polymorphism via virtual functions. Here's a quick breakdown:
+
+- vtable (Virtual Table):
+When a class has one or more virtual functions, the compiler creates a table (called the vtable) that stores pointers to the virtual functions defined for that class. Each derived class that overrides virtual functions gets its own vtable.
+
+- vtable Pointer (vptr):
+Each object of a class with virtual functions contains a hidden pointer, typically named vptr, that points to the vtable of its class. This enables the correct function to be called at runtime when a virtual function is invoked through a base class pointer or reference.
+
+- How It Works:
+When you call a virtual function, the program uses the object's vptr to look up the appropriate function pointer in the vtable and then calls that function. This mechanism ensures that the overridden function of the derived class is executed.
+
+- Overhead:
+The use of a vtable pointer adds a small memory overhead (usually the size of a pointer) per object and a minor cost for the indirect function call. For most applications, especially non-performance-critical code, this overhead is negligible.
+
+In summary, the vtable pointer is essential for `runtime polymorphism` in C++ and allows the language to support features like `virtual functions` and `dynamic binding`.
+
+# My takeaway
+But just 
 
 ---
 
