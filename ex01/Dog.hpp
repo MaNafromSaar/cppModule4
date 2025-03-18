@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnaumann <mnaumann@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: mnaumann <mnaumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 12:20:34 by mnaumann          #+#    #+#             */
-/*   Updated: 2025/02/18 13:33:55 by mnaumann         ###   ########.fr       */
+/*   Updated: 2025/03/18 15:59:33 by mnaumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ class Dog : public Animal {
 		Dog();
 		~Dog();
 		Dog(const Dog &src);
+		Dog &operator=(const Dog &src);
 		void makeSound() const;
 		void printIdeas() const;
 };

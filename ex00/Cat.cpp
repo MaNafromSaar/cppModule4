@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnaumann <mnaumann@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: mnaumann <mnaumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 12:20:24 by mnaumann          #+#    #+#             */
-/*   Updated: 2025/02/17 17:19:16 by mnaumann         ###   ########.fr       */
+/*   Updated: 2025/03/18 15:30:43 by mnaumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,14 @@ Cat::Cat(const Cat &src) : Animal(src) {
 	std::cout << "Copycat" << std::endl;
 }
 
+Cat &Cat::operator=(const Cat &src) {
+	std::cout << "Copycat assignment called" << std::endl;
+	if (this == &src)
+		return *this;
+	this->type = src.type;
+	return *this;
+}
+
 void Cat::makeSound() const {
 	std::cout << "Cat goes: Meow" << std::endl;
 }
@@ -38,6 +46,14 @@ WrongCat::~WrongCat() {
 
 WrongCat::WrongCat(const WrongCat &src) : WrongAnimal(src) {
 	std::cout << "Copycat" << std::endl;
+}
+
+WrongCat &WrongCat::operator=(const WrongCat &src) {
+	std::cout << "Copycat assignment called" << std::endl;
+	if (this == &src)
+		return *this;
+	this->type = src.type;
+	return *this;
 }
 
 void WrongCat::makeSound() const {

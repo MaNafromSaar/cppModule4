@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnaumann <mnaumann@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: mnaumann <mnaumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 12:20:32 by mnaumann          #+#    #+#             */
-/*   Updated: 2025/02/18 14:04:19 by mnaumann         ###   ########.fr       */
+/*   Updated: 2025/03/18 15:59:56 by mnaumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,13 @@ Dog::~Dog() {
 Dog::Dog(const Dog &src) : Animal(src) {
 	_brain = new Brain(*src._brain);
 	//std::cout << "Doggydog" << std::endl;
+}
+
+Dog &Dog::operator=(const Dog &src) {
+	Animal::operator=(src);
+	*_brain = *src._brain;
+	//std::cout << "Doggydog assignment called" << std::endl;
+	return *this;
 }
 
 void Dog::makeSound() const {

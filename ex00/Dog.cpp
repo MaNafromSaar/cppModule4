@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnaumann <mnaumann@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: mnaumann <mnaumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 12:20:32 by mnaumann          #+#    #+#             */
-/*   Updated: 2025/02/18 10:40:38 by mnaumann         ###   ########.fr       */
+/*   Updated: 2025/03/18 15:33:19 by mnaumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,16 @@ Dog::Dog(const Dog &src) : Animal(src) {
 	std::cout << "Doggydog" << std::endl;
 }
 
+Dog &Dog::operator=(const Dog &src) {
+	std::cout << "Doggydog assignment called" << std::endl;
+	if (this == &src)
+		return *this;
+	this->type = src.type;
+	return *this;
+}
+
 void Dog::makeSound() const {
-	std::cout << "Dog goes Woof" << std::endl;
+	std::cout << "Dog goes: Woof" << std::endl;
 }
 
 // The sound variable gets overwritten now, still the wrong

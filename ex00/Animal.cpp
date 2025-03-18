@@ -6,7 +6,7 @@
 /*   By: mnaumann <mnaumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 12:20:17 by mnaumann          #+#    #+#             */
-/*   Updated: 2025/03/18 14:03:48 by mnaumann         ###   ########.fr       */
+/*   Updated: 2025/03/18 15:36:06 by mnaumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void Animal::makeSound() const {
 	std::cout << "Animal goes: UUUARRRGHH!" << std::endl;
 }
 
+//WrongAnimal
 WrongAnimal::WrongAnimal() : type("GenericWrongAnimal") {
 	std::cout << "WrongAnimal created via default constructor" << std::endl;
 }
@@ -85,9 +86,11 @@ void WrongAnimal::setType(std::string type) {
 }
 
 void WrongAnimal::makeSound() const {
-	std::cout << "PseudoAnimal goes UUUARRRGGH!" << std::endl;
+	std::cout << "PseudoAnimal goes: UUUARRRGGH!" << std::endl;
 }
 
+
+//mutatedAnimal
 mutatedAnimal::mutatedAnimal() : type("GenericMutatedAnimal"), sound("UUUARRRGHH!") {
 	std::cout << "mutatedAnimal created via default constructor" << std::endl;
 }
@@ -124,5 +127,5 @@ void mutatedAnimal::setType(std::string type) {
 }
 
 void mutatedAnimal::makeSound() const {
-	std::cout << "mutatedAnimal, which absolutely is not CatDog goes " << this->sound << std::endl;
+	std::cout << "mutatedAnimal, which absolutely is not CatDog goes: " << this->sound << std::endl;
 }

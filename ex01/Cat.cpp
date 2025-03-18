@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnaumann <mnaumann@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: mnaumann <mnaumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 12:20:24 by mnaumann          #+#    #+#             */
-/*   Updated: 2025/02/18 14:10:47 by mnaumann         ###   ########.fr       */
+/*   Updated: 2025/03/18 16:00:15 by mnaumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,13 @@ Cat::~Cat() {
 Cat::Cat(const Cat &src) : Animal(src) {
 	this->_brain = new Brain(*src._brain);
 	//std::cout << "Copycat" << std::endl;
+}
+
+Cat &Cat::operator=(const Cat &src) {
+	Animal::operator=(src);
+	*_brain = *src._brain;
+	//std::cout << "Copycat assignment called" << std::endl;
+	return *this;
 }
 
 void Cat::makeSound() const {
