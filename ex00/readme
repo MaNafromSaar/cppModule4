@@ -43,6 +43,69 @@ If both base and derived classes share the same (inherited) mutable variable, th
 ### Further Test
 The further test implements exactly that behavior. `CatDog` gives the right sound but is called through the wrong function, which can be seen in the statement before the sound.
 
+### new orthodox canonical form - move and move asignment
+I did not implement those here but was curious about these new standards and want to document the research as it surely will be useful later on.
+As in exams, the standard is still c++98, I don't want to get into habits that would not comply yet but still be aware of the concepts and reasons.
+
+#### Move Constructor
+The move constructor is a special constructor that "moves" resources from one object to another, rather than copying them. This is particularly useful for objects that manage resources like dynamic memory, file handles, or network connections.
+
+Syntax: Animal(Animal &&src) noexcept;
+
+Implementation:
+Animal::Animal(Animal &&src) noexcept : type(std::move(src.type)) {
+    std::cout << "Animal move constructor called" << std::endl;
+}
+
+Explanation:
+
+Animal(Animal &&src) noexcept: This is the move constructor. The && indicates that src is an rvalue reference, which means it can bind to temporary objects.
+: type(std::move(src.type)): The std::move function casts src.type to an rvalue, allowing the move constructor of std::string to be called. This transfers the resource from src.type to this->type, leaving src.type in a valid but unspecified state.
+noexcept: This keyword indicates that the move constructor will not throw exceptions, which is important for certain optimizations.
+
+#### Move Assignment Operator
+The move assignment operator is similar to the move constructor but is used for assigning an existing object to another existing object.
+
+Syntax:
+Animal &operator=(Animal &&src) noexcept;
+
+Implementation:
+Animal &Animal::operator=(Animal &&src) noexcept {
+    std::cout << "Animal move assignment operator called" << std::endl;
+    if (this == &src)
+        return *this;
+    this->type = std::move(src.type);
+    return *this;
+}
+
+Explanation:
+
+Animal &operator=(Animal &&src) noexcept: This is the move assignment operator. The && indicates that src is an rvalue reference.
+if (this == &src) return *this;: This checks for self-assignment and returns the current object if src is the same as this.
+this->type = std::move(src.type);: The std::move function casts src.type to an rvalue, allowing the move assignment operator of std::string to be called. This transfers the resource from src.type to this->type.
+
+Why Do We Need Them?
+- Performance: Move semantics can significantly improve performance by eliminating unnecessary deep copies of resources. Instead of copying the resource, the move constructor and move assignment operator transfer ownership of the resource.
+- Resource Management: For classes that manage resources like dynamic memory, file handles, or network connections, move semantics provide a way to transfer ownership of these resources safely and efficiently.
+
+Why Did They Become Standard?
+Move semantics were introduced in C++11 to address the inefficiencies of copying large objects or objects that manage resources. Before C++11, copying was the only option, which could be expensive in terms of performance. Move semantics provide a way to optimize resource management and improve the performance of C++ programs.
+
+#### Benefits and Cons
+Benefits:
+- Performance Improvement: Move semantics can significantly reduce the overhead of copying large objects or objects that manage resources.
+- Resource Efficiency: By transferring ownership of resources, move semantics help in efficient resource management.
+- Safety: Move semantics provide a safe way to transfer resources without the risk of resource leaks or double deletions.
+
+Cons:
+- Complexity: Introducing move semantics adds complexity to the code. Developers need to understand when and how to use move constructors and move assignment operators.
+- Potential for Bugs: Incorrect implementation of move semantics can lead to subtle bugs, such as leaving objects in an invalid state.
+- Compatibility: Older codebases that do not use C++11 or later standards cannot take advantage of move semantics.
+
+#### Conclusion
+Move constructors and move assignment operators are essential tools in modern C++ programming. They provide significant performance benefits and efficient resource management. However, they also introduce complexity and require careful implementation to avoid bugs. Understanding and using move semantics is crucial for writing efficient and modern C++ code.
+I left them out here to omit making it overly complex and to maintain compatibilty with c++98 as asked. They would not be beneficial in this context, so this paragraph is more a note to myself.
+
 ---
 
 **Author**: Matthias Naumann  

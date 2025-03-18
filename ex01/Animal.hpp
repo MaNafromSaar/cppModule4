@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnaumann <mnaumann@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: mnaumann <mnaumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 12:20:21 by mnaumann          #+#    #+#             */
-/*   Updated: 2025/02/18 14:07:10 by mnaumann         ###   ########.fr       */
+/*   Updated: 2025/03/18 13:42:35 by mnaumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ class Animal {
 	protected:
 		std::string type;
 	public:
+		Animal();
+		
 		Animal(std::string type = "Animal");
 		virtual ~Animal();
 		Animal(const Animal &src);

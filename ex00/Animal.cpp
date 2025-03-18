@@ -3,14 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnaumann <mnaumann@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: mnaumann <mnaumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 12:20:17 by mnaumann          #+#    #+#             */
-/*   Updated: 2025/02/18 10:41:59 by mnaumann         ###   ########.fr       */
+/*   Updated: 2025/03/18 14:03:48 by mnaumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
+
+Animal::Animal() : type("GenericAnimal") {
+	std::cout << "Animal created via default constructor" << std::endl;
+}
 
 Animal::Animal(std::string type) : type(type) {
 	std::cout << "Animal created" << std::endl;
@@ -22,6 +26,7 @@ Animal::~Animal() {
 
 Animal::Animal(const Animal &src) {
 	*this = src;
+	std::cout << "Animal cloned" << std::endl;
 }
 
 Animal &Animal::operator=(const Animal &src) {
@@ -45,6 +50,10 @@ void Animal::makeSound() const {
 	std::cout << "Animal goes: UUUARRRGHH!" << std::endl;
 }
 
+WrongAnimal::WrongAnimal() : type("GenericWrongAnimal") {
+	std::cout << "WrongAnimal created via default constructor" << std::endl;
+}
+
 WrongAnimal::WrongAnimal(std::string type) : type(type) {
 	std::cout << "WrongAnimal created" << std::endl;
 }
@@ -55,6 +64,7 @@ WrongAnimal::~WrongAnimal() {
 
 WrongAnimal::WrongAnimal(const WrongAnimal &src) {
 	*this = src;
+	std::cout << "WrongAnimal cloned" << std::endl;
 }
 
 WrongAnimal &WrongAnimal::operator=(const WrongAnimal &src) {
@@ -78,6 +88,10 @@ void WrongAnimal::makeSound() const {
 	std::cout << "PseudoAnimal goes UUUARRRGGH!" << std::endl;
 }
 
+mutatedAnimal::mutatedAnimal() : type("GenericMutatedAnimal"), sound("UUUARRRGHH!") {
+	std::cout << "mutatedAnimal created via default constructor" << std::endl;
+}
+
 mutatedAnimal::mutatedAnimal(std::string type, std::string sound) : type(type), sound(sound) {
 	std::cout << "mutatedAnimal created" << std::endl;
 }
@@ -88,6 +102,7 @@ mutatedAnimal::~mutatedAnimal() {
 
 mutatedAnimal::mutatedAnimal(const mutatedAnimal &src) {
 	*this = src;
+	std::cout << "mutatedAnimal cloned" << std::endl;
 }
 
 mutatedAnimal &mutatedAnimal::operator=(const mutatedAnimal &src) {
