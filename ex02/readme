@@ -45,6 +45,8 @@ The use of a vtable pointer adds a small memory overhead (usually the size of a 
 
 In summary, the vtable pointer is essential for `runtime polymorphism` in C++ and allows the language to support features like `virtual functions` and `dynamic binding`.
 
+# Brain
+As this exercise focuses on a totally different feature of cpp, I decided not to include the brain functionality fully here. Can easily be remedied as the files are alredy present.
 ---
 
 **Author**: Matthias Naumann  

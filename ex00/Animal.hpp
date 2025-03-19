@@ -6,7 +6,7 @@
 /*   By: mnaumann <mnaumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 12:20:21 by mnaumann          #+#    #+#             */
-/*   Updated: 2025/03/18 15:31:48 by mnaumann         ###   ########.fr       */
+/*   Updated: 2025/03/19 09:22:52 by mnaumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ class WrongAnimal {
 	public:
 		WrongAnimal();
 		WrongAnimal(std::string);
-		~WrongAnimal();
+		virtual ~WrongAnimal();
 		WrongAnimal(const WrongAnimal &src);
 		WrongAnimal &operator=(const WrongAnimal &src);
 		std::string getType() const;
@@ -50,11 +50,12 @@ class mutatedAnimal {
 		std::string type;
 	public:
 		// here we test what happens if the sound is a variable
+		// remove "virtual" from destructor to see the difference
 		std::string sound;
 		mutatedAnimal();
 		mutatedAnimal(std::string type, 
 			std::string sound = "UUUARRRGHH!");
-		~mutatedAnimal();
+		virtual ~mutatedAnimal();
 		mutatedAnimal(const mutatedAnimal &src);
 		mutatedAnimal &operator=(const mutatedAnimal &src);
 		std::string getType() const;

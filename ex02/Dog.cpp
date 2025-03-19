@@ -6,7 +6,7 @@
 /*   By: mnaumann <mnaumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 12:20:32 by mnaumann          #+#    #+#             */
-/*   Updated: 2025/03/19 08:42:02 by mnaumann         ###   ########.fr       */
+/*   Updated: 2025/03/19 09:57:09 by mnaumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@ Dog &Dog::operator=(const Dog &src) {
 
 void Dog::makeSound() const {
     std::cout << "Dog goes Woof" << std::endl;
+}
+
+void Dog::printIdeas() const {
+	_brain->printIdeas();
 }
 
 // The sound variable gets overwritten now, still the wrong
