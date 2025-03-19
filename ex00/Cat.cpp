@@ -6,7 +6,7 @@
 /*   By: mnaumann <mnaumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 12:20:24 by mnaumann          #+#    #+#             */
-/*   Updated: 2025/03/18 15:30:43 by mnaumann         ###   ########.fr       */
+/*   Updated: 2025/03/19 08:31:43 by mnaumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void Cat::makeSound() const {
 	std::cout << "Cat goes: Meow" << std::endl;
 }
 
+// WrongCat
 WrongCat::WrongCat() : WrongAnimal("WrongCat") {
 	std::cout << "WrongCat has been created" << std::endl;
 }

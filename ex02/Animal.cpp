@@ -3,14 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnaumann <mnaumann@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: mnaumann <mnaumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 12:20:17 by mnaumann          #+#    #+#             */
-/*   Updated: 2025/02/18 14:56:13 by mnaumann         ###   ########.fr       */
+/*   Updated: 2025/03/18 17:29:41 by mnaumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
+
+Animal::Animal() {
+	std::cout << "Animal created via default" << std::endl;
+}
 
 Animal::Animal(std::string type) : type(type) {
 	std::cout << "Animal created" << std::endl;
@@ -46,6 +50,13 @@ void Animal::makeSound() const {
 	std::cout << "Animal goes: UUUARRRGHH!" << std::endl;
 }
 
+
+// WrongAnimal
+
+WrongAnimal::WrongAnimal() {
+	std::cout << "WrongAnimal created via default" << std::endl;
+}
+
 WrongAnimal::WrongAnimal(std::string type) : type(type) {
 	std::cout << "WrongAnimal created" << std::endl;
 }
@@ -77,6 +88,12 @@ void WrongAnimal::setType(std::string type) {
 
 void WrongAnimal::makeSound() const {
 	std::cout << "PseudoAnimal goes UUUARRRGGH!" << std::endl;
+}
+
+// mutatedAnimal
+
+mutatedAnimal::mutatedAnimal() {
+	std::cout << "mutatedAnimal created via default" << std::endl;
 }
 
 mutatedAnimal::mutatedAnimal(std::string type, std::string sound) : type(type), sound(sound) {

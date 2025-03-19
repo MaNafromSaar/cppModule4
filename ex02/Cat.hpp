@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnaumann <mnaumann@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: mnaumann <mnaumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 12:20:28 by mnaumann          #+#    #+#             */
-/*   Updated: 2025/02/18 15:01:38 by mnaumann         ###   ########.fr       */
+/*   Updated: 2025/03/19 08:10:04 by mnaumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ class Cat : public Animal {
 		Cat();
 		~Cat();
 		Cat(const Cat &src);
+		Cat &operator=(const Cat &src);
 		void makeSound() const override;//overrides the 0 const
 };
 
@@ -28,6 +29,7 @@ class WrongCat : public WrongAnimal {
 		WrongCat();
 		~WrongCat();
 		WrongCat(const WrongCat &src);
+		WrongCat &operator=(const WrongCat &src);
 		void makeSound() const;
 };
 

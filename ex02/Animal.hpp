@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnaumann <mnaumann@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: mnaumann <mnaumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 12:20:21 by mnaumann          #+#    #+#             */
-/*   Updated: 2025/02/18 14:59:39 by mnaumann         ###   ########.fr       */
+/*   Updated: 2025/03/18 17:28:05 by mnaumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ class Animal {
 	protected:
 		std::string type;
 	public:
-		Animal(std::string type = "Animal");
+		Animal();
+		Animal(std::string type);
 		virtual ~Animal();
 		Animal(const Animal &src);
 		Animal &operator=(const Animal &src);
@@ -31,7 +32,8 @@ class WrongAnimal {
 	protected:
 		std::string type;
 	public:
-		WrongAnimal(std::string type = "WrongAnimal");
+		WrongAnimal();
+		WrongAnimal(std::string type);
 		~WrongAnimal();
 		WrongAnimal(const WrongAnimal &src);
 		WrongAnimal &operator=(const WrongAnimal &src);
@@ -46,7 +48,8 @@ class mutatedAnimal {
 	public:
 		// here we test what happens if the sound is a variable
 		std::string sound;
-		mutatedAnimal(std::string type = "mutatedAnimal", 
+		mutatedAnimal();
+		mutatedAnimal(std::string type, 
 			std::string sound = "UUUARRRGHH!");
 		~mutatedAnimal();
 		mutatedAnimal(const mutatedAnimal &src);
